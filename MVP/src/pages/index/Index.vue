@@ -1,8 +1,11 @@
 <template>
   <div class="container-fluid py-5">
       <div class="row">
-          <div class="col-12 mb-5">
+          <div class="col-6 mb-5">
               <button type="button" class="btn btn-primary" @click="addInput">Adicionar</button>
+          </div>
+              <div class="col-6 mb-5">
+              <button type="button" class="btn btn-primary" @click="save">Salvar</button>
           </div>
           <div class="col-4">
               <div class="form-group" v-for="(per, index) in perguntas" v-bind:key="index">

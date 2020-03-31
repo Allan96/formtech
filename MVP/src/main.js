@@ -1,8 +1,15 @@
 import Vue from 'vue'
-import App from './App.vue'
+import VueResource from 'vue-resource';
 
-Vue.config.productionTip = false
+import App from './App.vue'
+import router from './router/index.js';
+
+
+Vue.use(VueResource);
+
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+    el: '#app',
+    router,
+    render: h => h(App)
+})
