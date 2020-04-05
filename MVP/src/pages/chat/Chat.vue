@@ -27,48 +27,7 @@
             return {
                 indexValue: 0,
                 perguntaId: 1,
-                perguntas: [{
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },
-                {
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },
-                {
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },
-                {
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },
-                {
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },
-                {
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },
-                {
-                    type: "text",
-                    pergunta: "Oi, estou aqui para te ajudar! Para comeÃ§ar, qual Ã© o seu nome?",
-                    resposta: "",
-                    buttons: []
-                },]
+                perguntas : [],
             }
         },
         methods: {
@@ -78,6 +37,13 @@
                 console.log(this.perguntas);
 
             }
+        },
+        created: function() {
+            this.$http.get('http://localhost:3333/chat', {params: {id: this.$route.params.id}})
+                    .then(res => {
+                        this.perguntas = JSON.parse(res.body.perguntas);
+                    })
+                    .catch((error) => console.log(error))
         }
     }
 </script>

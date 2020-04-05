@@ -6,6 +6,8 @@
           </div>
               <div class="col-6 mb-5">
               <button type="button" class="btn btn-primary" @click="save">Salvar</button>
+
+              <a v-bind:href="demo" v-if="id" class="btn btn-primary" target="_blank">Ver chat</a>
           </div>
           <div class="col-4">
               <div class="form-group" v-for="(per, index) in perguntas" v-bind:key="index">
@@ -53,6 +55,8 @@
     export default {
         data() {
             return {
+                id: '',
+                demo: '',
                 indexValue: 0,
                 perguntaId: 1,
                 perguntas: [{
@@ -88,6 +92,19 @@
                 this.indexValue++;
                 console.log(this.perguntas);
 
+            },
+            save: function() {
+                this.$http.post('http://localhost:3333/chat', {
+                        perguntas: this.perguntas
+                    }, { params: {id: this.id}})
+                    .then(res => {
+                        console.log(res.body);
+                        if(res.body.id){
+                            this.demo = `./chat/${ res.body.id }`,
+                            this.id = res.body.id;
+                        }
+                    })
+                    .catch((error) => console.log(error))
             }
         }
     }
