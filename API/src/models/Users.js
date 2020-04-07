@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Chat extends Model {
+class Users extends Model {
     static init(sequelize) {
         super.init({
             id: {
@@ -8,9 +8,8 @@ class Chat extends Model {
                 primaryKey: true,
                 autoIncrement: true
             },
-            nome: DataTypes.STRING,
-            perguntas: DataTypes.JSONB,
-            user_id: DataTypes.STRING
+            email: DataTypes.STRING,
+            password: DataTypes.STRING
         }, {
             sequelize
         })
@@ -19,4 +18,4 @@ class Chat extends Model {
 
 }
 
-module.exports = Chat;
+module.exports = Users;

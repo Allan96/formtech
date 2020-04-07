@@ -43,7 +43,7 @@
                     .then(res => {
                         this.perguntas = JSON.parse(res.body.perguntas);
                     })
-                    .catch((error) => console.log(error))
+                    .catch((error) => console.log(error));
         }
     }
 </script>

@@ -15,13 +15,14 @@ module.exports = {
 
     },
     async create(req, res) {
-        const { id } = req.query;
+        const { id, nome, user_id } = req.query;
         const { perguntas } = req.body;
+        console.log(req.query)
         if (!id) {
-            const chat = await Chat.create({ perguntas });
+            const chat = await Chat.create({ perguntas, nome, user_id });
             return res.json(chat);
         } else {
-            const chat = await Chat.update({ perguntas }, {
+            const chat = await Chat.update({ perguntas, nome }, {
                 where: { id },
                 returning: true,
                 plain: true
@@ -29,7 +30,5 @@ module.exports = {
                 return res.json(result);
             })
         }
-
-
     },
 };
