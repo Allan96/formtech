@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
+import Cookies from 'js-cookie';
 
 
 import createChat from '../pages/createChat/Index.vue';
@@ -8,23 +9,47 @@ import Chat from '../pages/chat/Index.vue';
 import Login from '../pages/login/Index.vue';
 import Dashboard from '../pages/dashboard/Index.vue';
 
-
 Vue.use(VueRouter);
-
 
 const routes = [
     { path: '', component: Login },
-    { path: '/chat', component: createChat },
-    { path: '/dashboard', component: Dashboard },
+    {
+        path: '/chat',
+        component: createChat,
+        beforeEnter: (to, from, next) => {
+            const id = Cookies.get('id');
+            if (id) {
+                next()
+            }
+        }
+    },
+    {
+        path: '/dashboard',
+        component: Dashboard,
+        beforeEnter: (to, from, next) => {
+            const id = Cookies.get('id');
+            if (id) {
+                next()
+            } else {
+                router.push('/');
+            }
+        }
+    },
     {
         path: '/chat/:id',
         component: Chat,
-        props: true
+        props: true,
     },
     {
         path: '/chat/edit/:id',
         component: editChat,
-        props: true
+        props: true,
+        beforeEnter: (to, from, next) => {
+            const id = Cookies.get('id');
+            if (id) {
+                next()
+            }
+        }
     },
 ];
 

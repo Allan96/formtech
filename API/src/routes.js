@@ -1,20 +1,21 @@
 const express = require('express');
-
-
+const jwt = require('./jwt/index');
 const ChatController = require('./controllers/ChatController');
-const UsersController = require('./controllers/UsersController.js');
-const ListChatController = require('./controllers/ListChatController.js');
+const UsersController = require('./controllers/UsersController');
+const ListChatController = require('./controllers/ListChatController');
+
 
 const routes = express.Router();
 
 //CHAT
-routes.get('/chat', ChatController.index);
-routes.post('/chat', ChatController.create);
-routes.get('/list', ListChatController.index);
+routes.get('/view/chat', ChatController.view);
+routes.get('/chat', jwt.verifyJWT, ChatController.index);
+routes.post('/chat', jwt.verifyJWT, ChatController.create);
+routes.get('/list', jwt.verifyJWT, ListChatController.index);
 
 //USERS
-routes.get('/users', UsersController.index);
-routes.post('/users', UsersController.create);
+routes.get('/users', jwt.verifyJWT, UsersController.index);
+routes.post('/users', jwt.verifyJWT, UsersController.create);
 routes.post('/login', UsersController.login);
 
 

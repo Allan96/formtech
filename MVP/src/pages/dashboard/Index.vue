@@ -2,7 +2,8 @@
   <div class="container"> 
     <div class="row">
       <div class="col-12 pt-5">
-      <router-link  to="/chat" class="btn btn-primary" >Criar chat</router-link >
+      <router-link  to="/chat" class="btn btn-primary" >Criar chat</router-link>
+      <button type="button" class="btn btn-primary" @click="sair"> Sair</button>
       </div>
       <div class="col-12 py-4">
     <div v-for="(perguntas, index) in perguntasAll" v-bind:key="index" class="mb-3">
@@ -21,19 +22,34 @@
 
 <script>
 import Cookies from 'js-cookie';
+import router from '../../router/index.js';
+import mixins from '../../mixins/index.js';
 export default {
+        mixins,
   data() {
             return {
                 perguntasAll: [],
                 user_id: Cookies.get('id')
             }
         },
+        methods: {
+        },
          created: function() {
-            this.$http.get('http://localhost:3333/list', {params: {user_id: Cookies.get('id')}})
+            this.$http.get('http://localhost:3333/list', 
+    {
+      params: {user_id: Cookies.get('id')},
+      headers: { 'x-access-token': Cookies.get('token') }
+      })
                 .then(res => {
+                  console.log(res.body);
                     this.perguntasAll = res.body;
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => {
+                  const auth = error.body.auth
+                  if(!auth){
+                      router.push('/');
+                  }
+                });
         }
 }
 </script>

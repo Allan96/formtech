@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import router from '../../router/index.js';
-import Cookies from 'js-cookie';
+import mixins from '../../mixins/index.js';
 export default {
+        mixins,
    data() {
             return {
                 email: "",
@@ -34,21 +34,7 @@ export default {
             }
         },
         methods: {
-            login() {
-                this.$http.post('http://localhost:3333/login', {
-                        email: this.email,
-                        password: this.senha,
-                    })
-                    .then(function(res) {
-                        const { id } = res.body;
-                        if (id) {
-                            Cookies.set('id', id);
-                            // this.$store.state.id = id;
-                            router.push('/dashboard');
-                        }
-                    })
-                    .catch((error) => console.log(error))
-            }
+            
         }
 }
 </script>

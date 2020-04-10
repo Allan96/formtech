@@ -63,80 +63,43 @@
 
 <script>
     import Cookies from 'js-cookie';
-    export default {
+import router from '../../router/index.js';
+import mixins from '../../mixins/index.js';
+export default {
+        mixins,
         data() {
-            return {
-                id: '',
-                demo: '',
-                nome: 'Meu formulário',
-                indexValue: 0,
-                perguntaId: 1,
-                perguntas: []
-            }
-        },
-        methods: {
-            addInput: function() {
-                this.perguntas.push({
-                    type: "null",
-                    pergunta: "",
-                    resposta: "",
-                    buttons: []
-                });
-            },
-            addButton: function(val) {
-                if (this.perguntas[val].buttons.length < 3) {
-                    this.perguntas[val].buttons.push({
-                        name: 'Botão'
-                    });
-                } else {
-                    console.log('Muito botão');
-                }
-
-            },
-             deleteInput: function (index) {
-                this.perguntas.splice(index, 1);
-            },
-            deleteButton: function (children, index) {
-                console.log(this.perguntas[index].buttons.splice(children, 1));
-            },
-            next: function() {
-                this.perguntaId++;
-                this.indexValue++;
-                console.log(this.perguntas);
-            },
-            resetChat: function () {
-                this.indexValue = 0;
-                this.perguntaId = 1;
-                let i = 0;
-                while (i < this.perguntas.length){
-                     this.perguntas[i].resposta = "";
-                     i++;
-                }
-                console.log(this.perguntas);
-
-            },
-            save: function() {
-                this.$http.post('http://localhost:3333/chat', {
-                        perguntas: this.perguntas
-                    }, { params: {id: this.id, nome: this.nome, user_id: Cookies.get('id') }})
-                    .then(res => {
-                        if(res.body.id){
-                            this.demo = `./chat/${ res.body.id }`,
-                            this.id = res.body.id;
-                        }
-                    })
-                    .catch((error) => console.log(error))
-            }
-        },
-        created: function() {
-             this.$http.get('http://localhost:3333/chat', {params: {id: this.$route.params.id}})
-                    .then(res => {
-                        this.id =  res.body.id;
-                        this.nome = res.body.nome;
-                        this.perguntas = JSON.parse(res.body.perguntas);
-                    })
-                    .catch((error) => console.log(error));
+        return {
+            id: '',
+            demo: '',
+            nome: 'Meu formulário',
+            indexValue: 0,
+            perguntaId: 1,
+            perguntas: []
         }
+    },
+    methods: {
+    },
+    created: function() {
+        this.$http.get('http://localhost:3333/chat', {
+                params: {
+                    id: this.$route.params.id
+                },
+                headers: {
+                    'x-access-token': Cookies.get('token')
+                }
+            })
+            .then(res => {
+                this.id = res.body.id;
+                this.nome = res.body.nome;
+                this.perguntas = JSON.parse(res.body.perguntas);
+            })
+            .catch((error) => {
+                const auth = error.body.auth
+                if (!auth) {
+                    router.push('/');
+                }
+            });
+    }
     }
 </script>
 

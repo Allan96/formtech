@@ -22,7 +22,9 @@
 </template>
 
 <script>
-    export default {
+import mixins from '../../mixins/index.js';
+export default {
+        mixins,
         data() {
             return {
                 indexValue: 0,
@@ -30,16 +32,8 @@
                 perguntas : [],
             }
         },
-        methods: {
-            next: function() {
-                this.perguntaId++;
-                this.indexValue++;
-                console.log(this.perguntas);
-
-            }
-        },
         created: function() {
-            this.$http.get('http://localhost:3333/chat', {params: {id: this.$route.params.id}})
+            this.$http.get('http://localhost:3333/view/chat', {params: {id: this.$route.params.id},})
                     .then(res => {
                         this.perguntas = JSON.parse(res.body.perguntas);
                     })

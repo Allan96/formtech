@@ -2,7 +2,7 @@
   <div class="container-fluid py-5">
       <div class="row">
           <div class="col-2 mb-5">
-              <router-link to="/dashboard"> Voltar para o dashboard</router-link>
+              <router-link to="/dashboard"> Voltar para o dashboard a</router-link>
           </div>
           <div class="col-4 mb-5">
               <button type="button" class="btn btn-primary" @click="addInput">Adicionar</button>
@@ -50,11 +50,11 @@
 
                 <span class="p-2 d-block text-right" style="border: 1px solid red" v-if="falas.resposta && index != indexValue">{{  falas.resposta }}</span>
 
-                <input type="text" class="form-control" v-if="index == indexValue && falas.type == 'text'" v-model="falas.resposta" @keyup.enter="next" placeholder="Insira sua reposta" />
+                <input type="text" class="form-control" v-if="index == indexValue && falas.type == 'text'" v-model="falas.resposta" @keyup.enter="nextInput" placeholder="Insira sua reposta" />
                 <div  v-if="index == indexValue && falas.type == 'button'">
                     <div class="form-group" v-for="(button, index) in falas.buttons" v-bind:key="index">
 
-                        <input name="" id="" class="btn btn-primary" type="button" v-model="button.name"  @click="falas.resposta += button.name; next()">
+                        <input name="" id="" class="btn btn-primary" type="button" v-model="button.name"  @click="falas.resposta += button.name; nextInput()">
                     </div>
                 </div>
             </div>
@@ -64,8 +64,9 @@
 </template>
 
 <script>
-    import Cookies from 'js-cookie';
+    import mixins from '../../mixins/index.js';
     export default {
+        mixins,
         data() {
             return {
                 id: '',
@@ -82,61 +83,6 @@
             }
         },
         methods: {
-            addInput: function() {
-                this.perguntas.push({
-                    type: "null",
-                    pergunta: "",
-                    resposta: "",
-                    buttons: []
-                });
-                console.log(this.perguntas);
-            },
-            addButton: function(val) {
-                if (this.perguntas[val].buttons.length < 3) {
-                    this.perguntas[val].buttons.push({
-                        name: 'Botão'
-                    });
-                    console.log(this.perguntas);
-                } else {
-                    console.log('Muito botão');
-                }
-
-            },
-            deleteInput: function (index) {
-                this.perguntas.splice(index, 1);
-            },
-            deleteButton: function (children, index) {
-                console.log(this.perguntas[index].buttons.splice(children, 1));
-            },
-            next: function() {
-                this.perguntaId++;
-                this.indexValue++;
-                console.log(this.perguntas);
-            },
-            resetChat: function () {
-                this.indexValue = 0;
-                this.perguntaId = 1;
-                let i = 0;
-                while (i < this.perguntas.length){
-                     this.perguntas[i].resposta = "";
-                     i++;
-                }
-                console.log(this.perguntas);
-
-            },
-            save: function() {
-                this.$http.post('http://localhost:3333/chat', {
-                        perguntas: this.perguntas
-                    }, { params: {id: this.id, nome: this.nome, user_id: Cookies.get('id') }})
-                    .then(res => {
-                        console.log(res.body);
-                        if(res.body.id){
-                            this.demo = `./chat/${ res.body.id }`,
-                            this.id = res.body.id;
-                        }
-                    })
-                    .catch((error) => console.log(error))
-            }
         }
     }
 </script>

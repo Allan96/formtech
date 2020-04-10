@@ -1,3 +1,4 @@
+var jwt = require('jsonwebtoken');
 const Users = require('../models/Users');
 
 module.exports = {
@@ -20,9 +21,15 @@ module.exports = {
             where: { email, password }
         });
         if (!users) {
-            return res.json({ id: null });
+            return res.status(200).send({ auth: false, id: null });
         }
-        return res.json(users);
+        //JWT
+        const id = users.id;
+        var token = jwt.sign({ id }, process.env.SECRET, {
+            expiresIn: 300
+        });
+
+        return res.status(200).send({ auth: true, token: token, users });
     },
     async create(req, res) {
         const { id } = req.query;

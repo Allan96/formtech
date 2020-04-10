@@ -14,6 +14,17 @@ module.exports = {
         }
 
     },
+    async view(req, res) {
+        const { id } = req.query;
+        if (!id) {
+            return res.status(200).send({ auth: false, id: null });
+        }
+        const chat = await Chat.findOne({
+            where: { id }
+        });
+        return res.json(chat);
+
+    },
     async create(req, res) {
         const { id, nome, user_id } = req.query;
         const { perguntas } = req.body;
