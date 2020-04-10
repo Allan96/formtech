@@ -24,18 +24,18 @@
 </template>
 
 <script>
-import mixins from '../../mixins/index.js';
+import {login} from '../../functions/session';
 export default {
-        mixins,
+        mixins: login,
    data() {
             return {
                 email: "",
                 senha: ""
             }
         },
-        methods: {
-            
-        }
+         methods: {
+         login
+         }
 }
 </script>
 

@@ -50,11 +50,11 @@
 
                 <span class="p-2 d-block text-right" style="border: 1px solid red" v-if="falas.resposta && index != indexValue">{{  falas.resposta }}</span>
 
-                <input type="text" class="form-control" v-if="index == indexValue && falas.type == 'text'" v-model="falas.resposta" @keyup.enter="nextInput" placeholder="Insira sua reposta" />
+                <input type="text" class="form-control" v-if="index == indexValue && falas.type == 'text'" v-model="falas.resposta" @keyup.enter="next" placeholder="Insira sua reposta" />
                 <div  v-if="index == indexValue && falas.type == 'button'">
                     <div class="form-group" v-for="(button, index) in falas.buttons" v-bind:key="index">
 
-                        <input name="" id="" class="btn btn-primary" type="button" v-model="button.name"  @click="falas.resposta += button.name; nextInput()">
+                        <input name="" id="" class="btn btn-primary" type="button" v-model="button.name"  @click="falas.resposta += button.name; next()">
                     </div>
                 </div>
             </div>
@@ -64,9 +64,9 @@
 </template>
 
 <script>
-    import mixins from '../../mixins/index.js';
+    import {addInput, addButton, deleteInput, deleteButton, save} from '../../functions/inputs';
+    import {next, resetChat} from '../../functions/chat';
     export default {
-        mixins,
         data() {
             return {
                 id: '',
@@ -83,6 +83,13 @@
             }
         },
         methods: {
+            addInput,
+            addButton,
+            deleteInput,
+            deleteButton,
+            save,
+            next, 
+            resetChat
         }
     }
 </script>

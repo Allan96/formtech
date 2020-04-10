@@ -23,9 +23,8 @@
 <script>
 import Cookies from 'js-cookie';
 import router from '../../router/index.js';
-import mixins from '../../mixins/index.js';
+import { sair } from '../../functions/session';
 export default {
-        mixins,
   data() {
             return {
                 perguntasAll: [],
@@ -33,6 +32,7 @@ export default {
             }
         },
         methods: {
+          sair
         },
          created: function() {
             this.$http.get('http://localhost:3333/list', 

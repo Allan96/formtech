@@ -62,11 +62,11 @@
 </template>
 
 <script>
-    import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 import router from '../../router/index.js';
-import mixins from '../../mixins/index.js';
+import {addInput, addButton, deleteInput, deleteButton, save} from '../../functions/inputs';
+import {next, resetChat} from '../../functions/chat';
 export default {
-        mixins,
         data() {
         return {
             id: '',
@@ -77,7 +77,14 @@ export default {
             perguntas: []
         }
     },
-    methods: {
+   methods: {
+        addInput,
+        addButton,
+        deleteInput,
+        deleteButton,
+        save,
+        next, 
+        resetChat
     },
     created: function() {
         this.$http.get('http://localhost:3333/chat', {

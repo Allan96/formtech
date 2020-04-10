@@ -22,9 +22,8 @@
 </template>
 
 <script>
-import mixins from '../../mixins/index.js';
+import {next} from '../../functions/chat';
 export default {
-        mixins,
         data() {
             return {
                 indexValue: 0,
@@ -38,7 +37,10 @@ export default {
                         this.perguntas = JSON.parse(res.body.perguntas);
                     })
                     .catch((error) => console.log(error));
-        }
+        },
+           methods: {
+               next
+           }
     }
 </script>
 
