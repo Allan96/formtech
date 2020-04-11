@@ -14,6 +14,9 @@
       <router-link v-bind:to="`/chat/edit/${ perguntas.id }`">
         <button type="button" class="btn btn-primary" >Editar chat</button>
       </router-link>
+      <router-link v-bind:to="`/respostas/${ perguntas.id }`">
+        <button type="button" class="btn btn-primary" >Ver respostas</button>
+      </router-link>
       </div>
     </div>
     </div>

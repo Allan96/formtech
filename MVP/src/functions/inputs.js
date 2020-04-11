@@ -15,9 +15,9 @@ export function addButton(val) {
         this.perguntas[val].buttons.push({
             name: 'Botão'
         });
-        console.log(this.perguntas);
+        // console.log(this.perguntas);
     } else {
-        console.log('Muito botão');
+        // console.log('Muito botão');
     }
 
 }
@@ -35,7 +35,7 @@ export function save() {
             perguntas: this.perguntas
         }, { params: { id: this.id, nome: this.nome, user_id: Cookies.get('id') }, headers: { 'x-access-token': Cookies.get('token') } })
         .then(res => {
-            console.log(res.body);
+            // console.log(res.body);
             if (res.body.id) {
                 this.demo = `./chat/${ res.body.id }`,
                     this.id = res.body.id;

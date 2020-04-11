@@ -16,8 +16,7 @@ export function login() {
         .catch((error) => console.log(error))
 }
 export function sair() {
+    Cookies.remove('token');
     Cookies.remove('id');
     router.push('/');
-    console.log('aaaaaa')
-    console.log(Cookies.get('id'))
 }

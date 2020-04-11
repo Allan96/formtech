@@ -9,6 +9,7 @@ import store from './store/index.js'
 Vue.use(VueResource);
 
 
+
 new Vue({
     el: '#app',
     router,

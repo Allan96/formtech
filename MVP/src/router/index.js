@@ -8,20 +8,17 @@ import editChat from '../pages/editChat/Index.vue';
 import Chat from '../pages/chat/Index.vue';
 import Login from '../pages/login/Index.vue';
 import Dashboard from '../pages/dashboard/Index.vue';
+import Respostas from '../pages/respostas/Index.vue';
 
 Vue.use(VueRouter);
 
-const routes = [
-    { path: '', component: Login },
+const routes = [{
+        path: '/login',
+        component: Login
+    },
     {
-        path: '/chat',
-        component: createChat,
-        beforeEnter: (to, from, next) => {
-            const id = Cookies.get('id');
-            if (id) {
-                next()
-            }
-        }
+        path: '*',
+        component: Login
     },
     {
         path: '/dashboard',
@@ -32,6 +29,16 @@ const routes = [
                 next()
             } else {
                 router.push('/');
+            }
+        }
+    },
+    {
+        path: '/chat',
+        component: createChat,
+        beforeEnter: (to, from, next) => {
+            const id = Cookies.get('id');
+            if (id) {
+                next()
             }
         }
     },
@@ -51,6 +58,17 @@ const routes = [
             }
         }
     },
+    {
+        path: '/respostas/:chat_id',
+        component: Respostas,
+        props: true,
+        beforeEnter: (to, from, next) => {
+            const id = Cookies.get('id');
+            if (id) {
+                next()
+            }
+        }
+    },
 ];
 
 
@@ -58,5 +76,6 @@ const router = new VueRouter({
     routes,
     mode: 'history'
 });
+
 
 export default router

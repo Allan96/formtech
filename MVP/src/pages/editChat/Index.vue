@@ -98,7 +98,8 @@ export default {
             .then(res => {
                 this.id = res.body.id;
                 this.nome = res.body.nome;
-                this.perguntas = JSON.parse(res.body.perguntas);
+                this.perguntas = JSON.parse(res.body);
+                console.log(this.perguntas)
             })
             .catch((error) => {
                 const auth = error.body.auth
