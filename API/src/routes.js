@@ -3,6 +3,7 @@ const jwt = require('./jwt/index');
 const ChatController = require('./controllers/ChatController');
 const UsersController = require('./controllers/UsersController');
 const ListChatController = require('./controllers/ListChatController');
+const RespostaController = require('./controllers/RespostaController');
 
 
 const routes = express.Router();
@@ -17,6 +18,10 @@ routes.get('/list', jwt.verifyJWT, ListChatController.index);
 routes.get('/users', jwt.verifyJWT, UsersController.index);
 routes.post('/users', jwt.verifyJWT, UsersController.create);
 routes.post('/login', UsersController.login);
+
+//RESPOSTAS
+routes.post('/resposta', RespostaController.create);
+routes.get('/resposta', RespostaController.list);
 
 
 module.exports = routes;
