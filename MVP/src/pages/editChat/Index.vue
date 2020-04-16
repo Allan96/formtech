@@ -63,7 +63,7 @@
 
 <script>
 import Cookies from 'js-cookie';
-import router from '../../router/index.js';
+// import router from '../../router/index.js';
 import {addInput, addButton, deleteInput, deleteButton, save} from '../../functions/inputs';
 import {next, resetChat} from '../../functions/chat';
 export default {
@@ -98,14 +98,12 @@ export default {
             .then(res => {
                 this.id = res.body.id;
                 this.nome = res.body.nome;
-                this.perguntas = JSON.parse(res.body);
+                // console.log(res.body)
+                this.perguntas = JSON.parse(res.body.perguntas);
                 console.log(this.perguntas)
             })
             .catch((error) => {
-                const auth = error.body.auth
-                if (!auth) {
-                    router.push('/');
-                }
+              console.log(error)
             });
     }
     }

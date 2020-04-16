@@ -1,33 +1,34 @@
 <template>
+<div>
+  <NavbarDashboard/>
   <div class="container"> 
     <div class="row">
-      <div class="col-12 pt-5">
-      <router-link  to="/chat" class="btn btn-primary" >Criar chat</router-link>
-      <button type="button" class="btn btn-primary" @click="sair"> Sair</button>
+      <div class="col-8 pt-5 mb-5 d-flex justify-content-start">
+        <h1>Meus chats</h1>
       </div>
-      <div class="col-12 py-4">
-    <div v-for="(perguntas, index) in perguntasAll" v-bind:key="index" class="mb-3">
-      {{ perguntas.nome }}
-      <a target="_blank" v-bind:href="`/chat/${ perguntas.id }`">
-        <button type="button" class="btn btn-primary" >Ver chat</button>
-      </a>
-      <router-link v-bind:to="`/chat/edit/${ perguntas.id }`">
-        <button type="button" class="btn btn-primary" >Editar chat</button>
-      </router-link>
-      <router-link v-bind:to="`/respostas/${ perguntas.id }`">
-        <button type="button" class="btn btn-primary" >Ver respostas</button>
-      </router-link>
+      <div class="col-4 pt-5 mb-5 d-flex justify-content-end">
+        <router-link  to="/chat" >
+              <vs-button color="primary" type="gradient" icon="add" icon-after>Criar chat</vs-button> 
+        </router-link>
       </div>
+    <div v-for="(perguntas, index) in perguntasAll" v-bind:key="index" class="col-4 mb-3">
+        <CardChat :perguntas="perguntas" />
     </div>
-    </div>
+  </div>
+  </div>
   </div>
 </template>
 
 <script>
 import Cookies from 'js-cookie';
 import router from '../../router/index.js';
-import { sair } from '../../functions/session';
+import NavbarDashboard from '../../components/NavbarDashboard'
+import CardChat from '../../components/CardChat'
 export default {
+    components: {
+    NavbarDashboard,
+    CardChat
+  },
   data() {
             return {
                 perguntasAll: [],
@@ -35,7 +36,6 @@ export default {
             }
         },
         methods: {
-          sair
         },
          created: function() {
             this.$http.get('http://localhost:3333/list', 
@@ -57,9 +57,18 @@ export default {
 }
 </script>
 
-<style scoped>
-a{
-  float: right;
-  margin: 0 15px;
+<style scoped  lang="scss">
+h1{
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 42px;
+}
+.vs-button{
+    font-size: 14px;
+    font-weight: 400;
+    padding: 8px 24px;
+    &:hover{
+      color:white!important;
+    }
 }
 </style>
