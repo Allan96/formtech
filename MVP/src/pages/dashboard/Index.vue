@@ -7,7 +7,7 @@
         <h1>Meus chats</h1>
       </div>
       <div class="col-4 pt-5 mb-5 d-flex justify-content-end">
-        <router-link  to="/chat" >
+        <router-link to="/chat" >
               <vs-button color="primary" type="gradient" icon="add" icon-after>Criar chat</vs-button> 
         </router-link>
       </div>

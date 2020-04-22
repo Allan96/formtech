@@ -4,6 +4,7 @@
       <div slot="title">
         <vs-navbar-title>
            <img src="../assets/logo.svg">
+           <!-- <img src="../assets/logo-white.svg"> -->
         </vs-navbar-title>
       </div>
       <vs-navbar-item index="0">
@@ -19,7 +20,7 @@
         <vs-input  icon="lock" type="password" label-placeholder="insira sua senha"/>
         <vs-input  icon="lock" type="password" label-placeholder="confirme sua senha"/>
 
-        <vs-button width="100%" class="entrar" color="#0060FE">finalizar cadastro</vs-button>
+        <vs-button width="100%" class="entrar" color="primary" type="gradient">finalizar cadastro</vs-button>
       </vs-dropdown-menu>
     </vs-dropdown>
       </vs-navbar-item>
@@ -79,7 +80,8 @@ h3{
 }
 .entrar{
         width: 100%;
-        background: #1f74ff;
+        background: #640064;
+    background-image: linear-gradient(30deg, rgba(var(--vs-primary), 1), rgba(var(--vs-primary), .5))!important;
 }
 
 .registro{

@@ -7,7 +7,24 @@
         </vs-navbar-title>
       </div>
       <vs-navbar-item index="0">
-        <vs-button color="white" type="border" @click="sair"> Sair </vs-button>
+       <vs-dropdown>
+      <a class="a-icon" href="#">
+        <img src="../assets/profile.svg" height="40">
+      </a>
+
+      <vs-dropdown-menu>
+        <vs-dropdown-item>
+          option 1
+        </vs-dropdown-item>
+        <vs-dropdown-item>
+          option 2
+        </vs-dropdown-item>
+        <vs-dropdown-item divider @click="sair">
+          Sair
+        </vs-dropdown-item>
+      </vs-dropdown-menu>
+    </vs-dropdown>
+
       </vs-navbar-item>
       
     </vs-navbar>
@@ -38,10 +55,18 @@ export default {
       color:#1f74ff!important;
     }
 }
+button:focus {
+    outline: 1px dotted;
+    outline: none;
+}
+.con-vs-dropdown--menu{
+      width: 160px;
+}
 .nabarx{
-    padding: 16px 40px;
+    padding: 8px 40px;
     box-shadow: none;
-    background: #0060fede!important;
+    background: #640064!important;
+    background-image: linear-gradient(30deg, rgba(var(--vs-primary), 1), rgba(var(--vs-primary), .5))!important;
     .vs-navbar--item{ 
         a{
             font-size: 14px;

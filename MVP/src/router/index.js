@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import createChat from '../pages/createChat/Index.vue';
 import editChat from '../pages/editChat/Index.vue';
 import Chat from '../pages/chat/Index.vue';
-import Login from '../pages/login/Index.vue';
+import Login from '../pages/index/Index.vue';
 import Dashboard from '../pages/dashboard/Index.vue';
 import Respostas from '../pages/respostas/Index.vue';
 
