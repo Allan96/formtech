@@ -3,8 +3,8 @@ import router from '../router/index';
 
 export function addInput() {
     this.perguntas.push({
-        type: "null",
-        pergunta: "",
+        type: "text",
+        pergunta: "Insira aqui a fala do seu bot",
         resposta: "",
         buttons: []
     });
