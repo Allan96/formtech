@@ -3,7 +3,9 @@
  <vs-navbar class="nabarx">
       <div slot="title">
         <vs-navbar-title>
+             <router-link to="/dashboard">
            <img src="../assets/logo-white.svg">
+             </router-link>
         </vs-navbar-title>
       </div>
       <vs-navbar-item index="0">
