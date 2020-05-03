@@ -7,7 +7,6 @@
         </div> -->
         <div>
               <h4 class="d-flex align-content-center">
-                 <!-- <img src="../assets/icon.svg">  -->
                  {{ perguntas.nome }}
               </h4>
         </div>

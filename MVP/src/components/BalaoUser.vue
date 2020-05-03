@@ -3,7 +3,7 @@
              <span>
                 <slot></slot>
             </span>
-            <img src="../assets/user.svg" alt="" align="right">
+            <img src="../assets/images/user.svg" alt="" align="right">
         </div>
 </template>
 

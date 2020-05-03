@@ -3,8 +3,7 @@
  <vs-navbar color="transparent" class="nabarx">
       <div slot="title">
         <vs-navbar-title>
-           <img src="../assets/logo.svg">
-           <!-- <img src="../assets/logo-white.svg"> -->
+           <img src="../assets/images/logo.svg">
         </vs-navbar-title>
       </div>
       <vs-navbar-item index="0">

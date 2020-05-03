@@ -1,6 +1,6 @@
 <template>
          <div class="col-12 col-sm-8 balao d-flex align-items-start">
-             <img src="../assets/avatar.svg" alt="" align="left">
+             <img src="../assets/images/avatar.svg" alt="" align="left">
              <span>
                 <slot></slot>
             </span>

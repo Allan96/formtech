@@ -1,20 +1,18 @@
 <template>
 <div>
-
 </div>
   
 </template>
 
 <script>
-import { sair } from '../functions/session';
 export default {
     data() {
             return {
             }
-        },
-         methods: {
-         sair
-         }
+        }
        
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

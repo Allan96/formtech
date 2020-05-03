@@ -1,6 +1,8 @@
 <template>
 <div>
   <NavbarDashboard/>
+  <NavbarLateral/>
+  <main>
   <div class="container"> 
     <div class="row">
       <div class="col-8 pt-5 mb-5 d-flex justify-content-start">
@@ -16,6 +18,7 @@
     </div>
   </div>
   </div>
+  </main>
   </div>
 </template>
 
@@ -23,10 +26,12 @@
 import Cookies from 'js-cookie';
 import router from '../../router/index.js';
 import NavbarDashboard from '../../components/NavbarDashboard'
+import NavbarLateral from '../../components/NavbarLateral'
 import CardChat from '../../components/CardChat'
 export default {
     components: {
     NavbarDashboard,
+    NavbarLateral,
     CardChat
   },
   data() {

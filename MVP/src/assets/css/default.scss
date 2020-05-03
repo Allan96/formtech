@@ -1,0 +1,81 @@
+.upper {
+    text-transform: uppercase;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.semi {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.extra {
+    font-weight: 800;
+}
+
+.black {
+    font-weight: 900;
+}
+
+h5 {
+    font-weight: 400;
+}
+
+.btn-primary {
+    border-radius: 0;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    background: $roxo;
+    border-color: $roxo;
+    &:hover,
+    &:active,
+    &:focus,
+    &:active &:focus {
+        background: $azul;
+        border-color: $azul;
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+@media screen and (min-width: $xs) {
+    #header {
+        background-image: url('../../assets/images/blob.svg');
+        background-position: top right;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        header {
+            .row {
+                min-height: calc(100vh - 90px);
+            }
+            #login {
+                background: white;
+                padding: 30px 24px 50px 24px;
+                border-radius: 15px;
+                border: 1px solid #F1F1F1;
+                label {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        background: white;
+    }
+}
+
+@media screen and (min-width: $sm) {}
+
+@media screen and (min-width: $md) {}
+
+@media screen and (min-width: $lg) {}
+
+@media screen and (min-width: $xl) {}

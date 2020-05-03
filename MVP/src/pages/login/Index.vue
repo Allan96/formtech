@@ -18,7 +18,7 @@
                    <vs-button color="primary" type="filled">conheça a plataforma</vs-button>
                </div>
                <div class="col-12 col-md-6 offset-md-1 order-md-2 order-1  mt-5 mt-md-0">
-                   <img src="../../assets/header.svg" alt="" class="img-fluid">
+                   <img src="../../assets/images/header.svg" alt="" class="img-fluid">
                </div>
            </div>
        </div>
@@ -27,7 +27,7 @@
        <div class="container-fluid">
            <div class="row d-flex align-content-center">
                <div class="col-12 col-md-4 align-self-center offset-md-1">
-                   <img src="../../assets/sucesso.svg" alt="" class="img-fluid">
+                   <img src="../../assets/images/sucesso.svg" alt="" class="img-fluid">
                </div>
                <div class="col-12 col-md-4 offset-md-1 align-self-center mt-5 mt-sm-0">
                      <h2>
@@ -43,7 +43,7 @@
            
        </div>
  </section>
- <img src="../../assets/wave-1.svg" alt="" class="w-100 img-fluid" style="margin-top: -2px">
+ <img src="../../assets/images/wave-1.svg" alt="" class="w-100 img-fluid" style="margin-top: -2px">
  <section id="bot">
        <div class="container-fluid">
            <div class="row d-flex align-content-center">
@@ -121,7 +121,7 @@ export default {
     }
 header{
     background-color: white;
-    background-image: url('../../assets/blob.svg');
+    background-image: url('../../assets/images/blob.svg');
     // background-size: cover;
     background-position: top right;
     background-repeat: no-repeat;
@@ -217,7 +217,7 @@ footer{
     header{
         padding: 50px 0;
         background-color: white;
-        background-image: url('../../assets/blob-2.svg');
+        background-image: url('../../assets/images/blob-2.svg');
         background-position: right -50px;
         background-repeat: no-repeat;
          h1{

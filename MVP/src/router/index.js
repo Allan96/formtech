@@ -13,12 +13,16 @@ import Respostas from '../pages/respostas/Index.vue';
 Vue.use(VueRouter);
 
 const routes = [{
-        path: '/login',
-        component: Login
-    },
-    {
         path: '*',
-        component: Login
+        component: Login,
+        beforeEnter: (to, from, next) => {
+            const id = Cookies.get('id');
+            if (id) {
+                router.push('/dashboard');
+            } else {
+                next()
+            }
+        }
     },
     {
         path: '/dashboard',
