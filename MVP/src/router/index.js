@@ -43,6 +43,8 @@ const routes = [{
             const id = Cookies.get('id');
             if (id) {
                 next()
+            } else {
+                router.push('/');
             }
         }
     },
@@ -59,6 +61,8 @@ const routes = [{
             const id = Cookies.get('id');
             if (id) {
                 next()
+            } else {
+                router.push('/');
             }
         }
     },
@@ -70,6 +74,8 @@ const routes = [{
             const id = Cookies.get('id');
             if (id) {
                 next()
+            } else {
+                router.push('/');
             }
         }
     },

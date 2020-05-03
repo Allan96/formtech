@@ -4,7 +4,7 @@
     <div class="container mt-5">
 <div class="row">
   <div class="col-12 mb-5">
-       <h2>Respostas do formulário {{ this.idChat }}</h2>
+       <h2>Respostas do chat {{ this.idChat }}</h2>
   </div>
   <div class="col-12">
 <table class="table">

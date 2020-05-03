@@ -21,15 +21,6 @@ export default {
 
 <style scoped>
 .balao span{
-        display: block;
-        background: #FFFFFF;
-        box-shadow: 0px 1px 4px rgba(0,0,0,0.08);
-        border-radius: 4px;
-        padding: 13px 24px;
-        padding-right: 69px;
         margin-right: 16px;
-        position: relative;
-        word-wrap: break-word;
-        border-bottom: 2px solid #0000001f;
 }
 </style>

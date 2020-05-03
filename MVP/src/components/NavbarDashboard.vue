@@ -2,9 +2,9 @@
     <div>
         <nav class="navbar navbar-expand navbar-dark bg-primary bgc-white">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <router-link to="/" class="navbar-brand">
                     <img src="@/assets/images/logo.svg" alt="" class="img-fluid">
-                </a>
+                </router-link>
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item">

@@ -1,10 +1,15 @@
 <template>
- <vs-card class="cardx">
-        <!-- <div slot="header">
-          <h3>
-            {{ perguntas.nome }}
-          </h3>
-        </div> -->
+<div class="card">
+   <div class="card-body">
+     <i class="fa fa-comment"></i>
+    <h5 class="card-title mb-0">{{ perguntas.nome }}</h5>
+    <p class="card-text">Esse chat tem 5 repostas</p>
+     <router-link v-bind:to="`/respostas/${ perguntas.id }`" class="card-link">Ver respostas</router-link>
+    <router-link v-bind:to="`/chat/edit/${ perguntas.id }`" class="card-link">Editar chat</router-link>
+    <a v-bind:href="`/chat/${ perguntas.id }`" target="_blank" class="card-link">Ver chat</a>
+  </div>
+</div>
+ <!-- <vs-card class="cardx">
         <div>
               <h4 class="d-flex align-content-center">
                  {{ perguntas.nome }}
@@ -24,7 +29,7 @@
             </router-link>
           </vs-row>
         </div>
-      </vs-card>
+      </vs-card> -->
 </template>
 
 <script>

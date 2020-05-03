@@ -1,22 +1,29 @@
 <template>
 <div>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    
+    <nav class="navbar navbar-expand navbar-dark bg-primary bgc-white">
+            <div class="container">
+                <a class="navbar-brand">
+                    <img src="@/assets/images/logo.svg" alt="" class="img-fluid">
+                </a>
+                 <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                         {{ nome }}
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-
-    </header>
+        </nav>
   <div class="container py-5">
       <div class="row">
-          <div class="col-12">
+          <div id="chatUser" class="col-12">
             <div class="form-group mb-3 row" v-for="(falas, index) in perguntas.slice(0, perguntaId)" v-bind:key="index"> 
                 <BalaoBot> {{ falas.pergunta }} </BalaoBot>
                 <BalaoUser v-if="falas.resposta && index != indexValue"> {{ falas.resposta }} </BalaoUser>
 
+                    <div class="container"  v-if="index == indexValue && falas.type == 'text'">
+                        <input type="text" class="form-control container" v-model="falas.resposta" @keyup.enter="next" placeholder="Insira sua reposta" />
+                    </div>
                <input type="text" class="form-control container" v-if="index == indexValue && falas.type == 'text'" v-model="falas.resposta" @keyup.enter="next" placeholder="Insira sua reposta" />
                 <div class="buttons container"  v-if="index == indexValue && falas.type == 'button'">
                     <div class="form-group" v-for="(button, index) in falas.buttons" v-bind:key="index">
@@ -45,11 +52,14 @@ export default {
                 indexValue: 0,
                 perguntaId: 1,
                 perguntas : [],
+                nome: ''
             }
         },
         created: function() {
             this.$http.get('http://localhost:3333/view/chat', {params: {id: this.$route.params.id},})
                     .then(res => {
+                        console.log(res.body);
+                        this.nome = res.body.nome;
                         this.perguntas = JSON.parse(res.body.perguntas);
                         console.log(this.perguntas)
                     })
@@ -62,33 +72,12 @@ export default {
 </script>
 
 <style scoped>
-header {
-    padding: 30px 0;
-    font-size: 16px;
-    line-height: 34px;
-    color: white;
-    background: #640064 !important;
-    background-image: linear-gradient(30deg, rgba(var(--vs-primary), 1), rgba(var(--vs-primary), 0.5)) !important;
-    text-align: center;
-}
-.col-12{
-    position: relative;
-}
 .buttons{
         position: fixed;
         bottom: 0;
         display: flex;
         justify-content: center;
         width: 100%;
-}
-.btn-primary{
-    background: #246cf5;
-    border-radius: 4px;
-    font-size: 20px;
-    line-height: 28px;
-    padding: 12px 32px;
-    border: 0;
-    margin-right: 15px;
 }
 .form-control {
     position: fixed;
@@ -102,36 +91,5 @@ header {
     font-size: 16px;
     line-height: 28px;
     padding: 20px 24px;
-}
-  @-webkit-keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-.form-group:last-child .balao  {
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-name: slideInUp;
-    animation-name: slideInUp;
 }
 </style>

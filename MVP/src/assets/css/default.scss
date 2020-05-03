@@ -26,6 +26,10 @@ h5 {
     font-weight: 400;
 }
 
+label {
+    font-size: 12px;
+}
+
 .btn-primary {
     border-radius: 0;
     text-transform: uppercase;
@@ -43,12 +47,44 @@ h5 {
     }
 }
 
+.btn-secondary {
+    background: $red;
+    border: 0;
+    border-radius: 0;
+    .fa {
+        position: relative!important;
+        right: auto!important;
+        top: auto!important;
+        font-size: 16px!important;
+        color: #f5f6fa!important;
+    }
+    &:hover,
+    &:active,
+    &:focus,
+    &:active &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 @media screen and (min-width: $xs) {
     body {
         font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        color: #000000de;
+        color: hsla(0, 0%, 0%, 0.7);
         background: #F5F6FA;
     }
     #header {
@@ -63,11 +99,8 @@ h5 {
             #login {
                 background: white;
                 padding: 30px 24px 50px 24px;
-                border-radius: 15px;
-                border: 1px solid #F1F1F1;
-                label {
-                    font-size: 12px;
-                }
+                border: 1px solid rgba(0, 0, 0, .125);
+                border-radius: .25rem;
             }
         }
     }
@@ -90,6 +123,63 @@ h5 {
                     }
                 }
             }
+        }
+    }
+    .card {
+        .fa {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 24px;
+            color: #f5f6fa;
+        }
+        .card-text {
+            font-size: 14px;
+        }
+    }
+    .accordion {
+        .card {
+            .card-header {
+                display: flex;
+                padding: 8px 15px;
+                align-items: center;
+                justify-content: space-between;
+                border: 0;
+                background: $white;
+                font-size: 18px;
+                line-height: 24px;
+            }
+        }
+    }
+    .balao span {
+        display: block;
+        background: #FFFFFF;
+        border-radius: 4px;
+        padding: 13px 24px;
+        padding-right: 69px;
+        position: relative;
+        word-wrap: break-word;
+        border: 1px solid rgba(0, 0, 0, .125);
+        color: hsla(0, 0%, 0%, 0.7);
+    }
+    #chat {
+        .form-group:last-child {
+            -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-name: slideInUp;
+            animation-name: slideInUp;
+        }
+    }
+    #chatUser {
+        .form-group:last-child .balao {
+            -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-name: slideInUp;
+            animation-name: slideInUp;
         }
     }
 }
