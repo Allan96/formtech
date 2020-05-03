@@ -10,11 +10,4 @@ export default {
 </script>
 
 <style>
-body{
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: rgba(0, 0, 0, 0.87);
-  background: #F5F6FA;
-}
 </style>

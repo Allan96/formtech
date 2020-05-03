@@ -1,8 +1,21 @@
 <template>
-<div>
+    <div>
+        <nav class="navbar navbar-expand navbar-dark bg-primary bgc-white">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="@/assets/images/logo.svg" alt="" class="img-fluid">
+                </a>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="sair">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-</div>
-  
+    </div>
 </template>
 
 <script>
@@ -13,7 +26,7 @@ export default {
             }
         },
          methods: {
-         sair
+          sair
          }
        
 }

@@ -44,6 +44,13 @@ h5 {
 }
 
 @media screen and (min-width: $xs) {
+    body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #000000de;
+        background: #F5F6FA;
+    }
     #header {
         background-image: url('../../assets/images/blob.svg');
         background-position: top right;
@@ -69,6 +76,21 @@ h5 {
         width: 100%;
         bottom: 0;
         background: white;
+    }
+    nav {
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    color: #000000de;
+                    &:hover,
+                    &:active,
+                    &:focus,
+                    &:active &:focus {
+                        color: $azul;
+                    }
+                }
+            }
+        }
     }
 }
 
